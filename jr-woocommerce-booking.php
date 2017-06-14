@@ -9,4 +9,4 @@
  * Text Domain: jr-woocommerce-booking
  * Domain Path: languages/
  */
- echo
+ echo "This is my plugin"
