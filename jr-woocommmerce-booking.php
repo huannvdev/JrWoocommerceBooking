@@ -31,9 +31,9 @@ if (!class_exists('JrWoocommerceBooking')) {
         private static $instance;
 
         /**
-         * @var JrBooingPostType $post_type
+         * @var JWBBookingPostType $post_type_name
          */
-        public $booking_post_type;
+        public $booking_post_type_name;
 
         /**
          * @return JrWoocommerceBooking
@@ -41,7 +41,8 @@ if (!class_exists('JrWoocommerceBooking')) {
         public static function getInstance() {
             if (!isset(self::$instance) && !(self::$instance instanceof JrWoocommerceBooking)) {
                 self::$instance = new JrWoocommerceBooking();
-                self::$instance->booking_post_type = new JWBBookingPostType();
+                self::$instance->booking_post_type_name = new JWBBookingPostType();
+                new JWBBookingServiceTaxonomy();
             }
             return self::$instance;
         }
@@ -71,6 +72,7 @@ if (!class_exists('JrWoocommerceBooking')) {
 
         private function include_files() {
             require_once (JWB_PLUGIN_DIR . 'inc/post-types/class-jwb-booking-posttype.php');
+            require_once (JWB_PLUGIN_DIR . 'inc/taxonomy/class-jwb-booking-service-taxonomy.php');
         }
     }
 
