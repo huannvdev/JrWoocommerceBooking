@@ -43,6 +43,7 @@ if (!class_exists('JrWoocommerceBooking')) {
                 self::$instance = new JrWoocommerceBooking();
                 self::$instance->booking_post_type_name = new JWBBookingPostType();
                 new JWBBookingServiceTaxonomy();
+                new JWBProductType();
             }
             return self::$instance;
         }
@@ -73,6 +74,7 @@ if (!class_exists('JrWoocommerceBooking')) {
         private function include_files() {
             require_once (JWB_PLUGIN_DIR . 'inc/post-types/class-jwb-booking-posttype.php');
             require_once (JWB_PLUGIN_DIR . 'inc/taxonomy/class-jwb-booking-service-taxonomy.php');
+            require_once (JWB_PLUGIN_DIR . 'inc/product/class-jwb-product-type.php');
         }
     }
 

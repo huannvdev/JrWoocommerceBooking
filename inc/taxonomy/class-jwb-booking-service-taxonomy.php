@@ -8,6 +8,7 @@ class JWBBookingServiceTaxonomy {
      */
     public function __construct() {
         add_action('init', array($this, 'jwb_register_taxonomy'));
+        add_action('admin_menu', array($this, 'jwb_remove_booking_service_taxonomy_option'));
     }
 
     /**
@@ -54,5 +55,9 @@ class JWBBookingServiceTaxonomy {
         );
 
         register_taxonomy($this->taxonomy_name, array(JWB()->booking_post_type_name->post_type_name, 'product'), $args);
+    }
+
+    public function jwb_remove_booking_service_taxonomy_option(){
+        remove_meta_box($this->taxonomy_name . 'div', array(JWB()->booking_post_type_name->post_type_name, 'product'), 'side');
     }
 }
