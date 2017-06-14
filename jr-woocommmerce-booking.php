@@ -41,6 +41,7 @@ if (!class_exists('JrWoocommerceBooking')) {
         public static function getInstance() {
             if (!isset(self::$instance) && !(self::$instance instanceof JrWoocommerceBooking)) {
                 self::$instance = new JrWoocommerceBooking();
+                self::$instance->booking_post_type = new JWBBookingPostType();
             }
             return self::$instance;
         }
@@ -49,6 +50,9 @@ if (!class_exists('JrWoocommerceBooking')) {
          * JrWoocommerceBooking constructor.
          */
         public function __construct() {
+            //Define path and url plugin
+            define( 'JWB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+            define( 'JWB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
             $this->init_hooks();
             $this->include_files();
@@ -66,7 +70,7 @@ if (!class_exists('JrWoocommerceBooking')) {
         }
 
         private function include_files() {
-
+            require_once (JWB_PLUGIN_DIR . 'inc/post-types/class-jwb-booking-posttype.php');
         }
     }
 
